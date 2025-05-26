@@ -8,15 +8,15 @@ chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const message = messageInput.value;
   const username = usernameInput.value || "匿名";
-  if (message.trim() !== "") {
+  if (message.trim()) {
     socket.emit('chat message', { username, message });
     messageInput.value = '';
   }
 });
 
 socket.on('chat message', (data) => {
-  const msgElement = document.createElement('p');
-  msgElement.textContent = `${data.username}: ${data.message}`;
-  chatBox.appendChild(msgElement);
+  const msg = document.createElement('p');
+  msg.textContent = `${data.username}: ${data.message}`;
+  chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 });
