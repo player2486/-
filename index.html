@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>聊天室</title>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="chat-container">
@@ -12,11 +11,11 @@
     <div id="chat-box"></div>
     <form id="chat-form">
       <input type="text" id="username" placeholder="暱稱" required />
-      <input type="text" id="message" placeholder="輸入訊息..." required autocomplete="off" />
+      <input type="text" id="message" placeholder="輸入訊息..." required />
       <button type="submit">送出</button>
     </form>
   </div>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
