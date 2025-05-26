@@ -1,22 +1,22 @@
-const socket = io();
-const chatForm = document.getElementById('chat-form');
-const messageInput = document.getElementById('message');
-const usernameInput = document.getElementById('username');
-const chatBox = document.getElementById('chat-box');
+const chatBox = document.getElementById("chat-box");
+const chatForm = document.getElementById("chat-form");
+const usernameInput = document.getElementById("username");
+const messageInput = document.getElementById("message");
 
-chatForm.addEventListener('submit', (e) => {
+chatForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  const message = messageInput.value;
-  const username = usernameInput.value || "匿名";
-  if (message.trim()) {
-    socket.emit('chat message', { username, message });
-    messageInput.value = '';
-  }
-});
 
-socket.on('chat message', (data) => {
-  const msg = document.createElement('p');
-  msg.textContent = `${data.username}: ${data.message}`;
-  chatBox.appendChild(msg);
+  const username = usernameInput.value.trim();
+  const message = messageInput.value.trim();
+
+  if (!username || !message) return;
+
+  const time = new Date().toLocaleTimeString();
+
+  const newMessage = document.createElement("p");
+  newMessage.innerHTML = `<strong>${username}</strong> <span style="color:#aaa;">[${time}]</span>: ${message}`;
+  chatBox.appendChild(newMessage);
   chatBox.scrollTop = chatBox.scrollHeight;
+
+  messageInput.value = "";
 });
